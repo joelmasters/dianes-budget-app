@@ -93,6 +93,10 @@ class App extends React.Component {
 
   hydrateStateWithLocalStorage = () => {
     let store = JSON.parse(localStorage.getItem("state"));
+    if (!store) {
+      console.log("No localStorage found, using default state");
+      store = {...this.state};
+    }
     let d = new Date();
     let dd = d.getDate();
     let m = d.getMonth() + 1;
