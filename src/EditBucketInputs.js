@@ -88,7 +88,7 @@ export default function EditBucketInputs(props) {
       let d = new Date();
       let y = d.getFullYear();
       let m = d.getMonth() + 1;
-      let da = d.getDay();
+      let da = d.getDate();
       let n = m + "/" + da + "/" + y;
 
       values.history.unshift({
