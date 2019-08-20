@@ -4,6 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import logo from './rainbow_title_img.png';
 
 const useStyles = makeStyles(theme => ({
   text: {
@@ -60,7 +61,7 @@ export default function NavBar(props) {
   return (
     <>
       <AppBar position="static" color="primary" className={classes.appBar}>
-        <div className={classes.title}><img style={iconStyle} src="%PUBLIC_URL%/rainbow_title_img.png" />
+        <div className={classes.title}><img style={iconStyle} src={logo} alt="Rainbow Logo" />
           Diane's Budget App
         </div>
         <Toolbar>
