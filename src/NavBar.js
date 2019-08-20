@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     color: 'black',
   },
   title: {
-    textAlign: 'center',
+    textAlign: 'left',
     marginLeft: theme.spacing(2),
     lineHeight: '50px',
     fontSize: '24px',
@@ -60,7 +60,7 @@ export default function NavBar(props) {
   return (
     <>
       <AppBar position="static" color="primary" className={classes.appBar}>
-        <div className={classes.title}><img style={iconStyle} src="/rainbow_title_img.png" />
+        <div className={classes.title}><img style={iconStyle} src="%PUBLIC_URL%/rainbow_title_img.png" />
           Diane's Budget App
         </div>
         <Toolbar>
