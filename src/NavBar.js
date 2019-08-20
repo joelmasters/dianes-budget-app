@@ -37,10 +37,22 @@ const useStyles = makeStyles(theme => ({
     color: 'black',
   },
   title: {
-    textAlign: 'left',
+    textAlign: 'center',
     marginLeft: theme.spacing(2),
+    lineHeight: '50px',
+    fontSize: '24px',
   }
 }));
+
+const iconStyle = {
+  height: '50px',
+  width: '50px',
+  borderRadius: '5px',
+  display: 'inline-block',
+  position: 'relative',
+  top: '10px',
+  marginRight: '6px',
+}
 
 export default function NavBar(props) {
   const classes = useStyles();
@@ -48,7 +60,9 @@ export default function NavBar(props) {
   return (
     <>
       <AppBar position="static" color="primary" className={classes.appBar}>
-        <h2 className={classes.title}>Diane's Budget App</h2>
+        <div className={classes.title}><img style={iconStyle} src="/rainbow_title_img.png" />
+          Diane's Budget App
+        </div>
         <Toolbar>
           <Fab color="secondary" 
                 aria-label="create new bucket" 
