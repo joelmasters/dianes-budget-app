@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import logo from './rainbow_title_img.png';
+import logo from './rainbow_title_img.png'; // for icon
 
 const useStyles = makeStyles(theme => ({
   text: {
