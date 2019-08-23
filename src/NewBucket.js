@@ -54,7 +54,7 @@ export default class NewBucket extends React.Component {
 const styles = {
   fullList: {
     width: 'auto',
-    height: '90vh',
+    height: '80vh',
   }
 }
   

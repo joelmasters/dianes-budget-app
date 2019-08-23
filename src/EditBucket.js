@@ -66,7 +66,7 @@ export default class EditBucket extends React.Component {
 
 const styles = {
   fullList: {
-    width: 'auto',
+    width: '90vw',
     height: '100vh',
   },
   button: {
