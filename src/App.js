@@ -66,7 +66,7 @@ class App extends React.Component {
       showNewBucketScreen: false, 
       activeBucket: bucket }, this.setState({ showEditBucketScreen: true }));
   }
-  editBucket = (edittedBucket) => {
+  editBucket = (edittedBucket, toggle=true) => {
     let buckets = [...this.state.buckets];
     for (let i = 0; i < buckets.length; i++) {
       if (buckets[i].name === edittedBucket.name) {
@@ -74,9 +74,11 @@ class App extends React.Component {
         break;
       }
     }
+    let showEditBucketScreen = toggle ? false : true;
+
     this.setState({ 
       buckets: buckets,
-      showEditBucketScreen: false }, this.storeToLocalStorage);
+      showEditBucketScreen: showEditBucketScreen }, this.storeToLocalStorage);
   }
   deleteBucket = (deletedBucket) => {
     let buckets = [...this.state.buckets];

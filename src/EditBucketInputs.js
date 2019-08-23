@@ -13,10 +13,14 @@ import List from '@material-ui/core/List';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const useStyles = makeStyles(theme => ({
   container: {
     display: 'block',
+    paddingRight: theme.spacing(2),
     //flexWrap: 'wrap',
   },
   textField: {
@@ -38,7 +42,11 @@ const useStyles = makeStyles(theme => ({
   group: {
     margin: theme.spacing(1, 0),
   },
+  button: {
+    margin: theme.spacing(1),
+  },
   buttonAdd: {
+    boxSizing: 'border-box',
     margin: theme.spacing(1),
     width: '100%',
     height: '60px',
@@ -83,7 +91,7 @@ export default function EditBucketInputs(props) {
     let diff = add - sub;
     let newVal = parseInt(prevVal) + diff;
     
-    if (newVal !== 0) {
+    if (newVal !== 0 && newVal !== "0") {
       values.left = newVal;
       let d = new Date();
       let y = d.getFullYear();
@@ -104,10 +112,16 @@ export default function EditBucketInputs(props) {
     }
 
     setValues({ ...values });
-    props.edit({ ...values });
+    props.edit({ ...values }, true);
   }
   const deleteBucket = () => {
     props.deleteBucket({ ...values });
+  }
+  const deleteHistoryItem = (idx) => {
+    let valChange = values.history.splice(idx, 1);
+    values.left -= valChange[0].diff;
+    setValues({ ...values });
+    props.edit({ ...values }, false);
   }
 
   return (
@@ -158,6 +172,11 @@ export default function EditBucketInputs(props) {
           {values.history.map((x,i) => 
             <ListItem button key={x.date + i}>
               <ListItemText primary={"$" + x.diff} secondary={x.date} />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="delete" onClick={() => deleteHistoryItem(i)}>
+                  <DeleteIcon />
+                </IconButton>
+              </ListItemSecondaryAction>
             </ListItem>
           )}
         </List> : ''}
