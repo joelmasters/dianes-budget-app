@@ -128,7 +128,6 @@ class App extends React.Component {
         store.buckets[i].left = parseInt(store.buckets[i].set);
       }
     }
-
   }
 
   componentDidMount = () => {

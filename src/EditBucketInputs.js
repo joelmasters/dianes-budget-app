@@ -80,7 +80,10 @@ export default function EditBucketInputs(props) {
   const handleAdd = name => event => {
   };
   const handleRadioChange = name => event => {
-    setValues({ ...values, [name]: event.target.value});
+    let vals = {...values};
+    vals.endOfMonth = event.target.value;
+    setValues({...vals});
+    props.edit({ ...vals }, false);
   }
   const edit = () => {
     let prevVal = values.left;
