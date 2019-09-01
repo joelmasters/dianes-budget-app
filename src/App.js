@@ -123,11 +123,12 @@ class App extends React.Component {
     let store = {...currStore};
     for (let i = 0; i < store.buckets.length; i++) {
       if (store.buckets[i].endOfMonth === "rollover") {
-        store.buckets[i].left = parseInt(store.buckets[i].left) + parseInt(store.bucekts[i].set);
+        store.buckets[i].left = parseInt(store.buckets[i].left) + parseInt(store.buckets[i].set);
       } else {
         store.buckets[i].left = parseInt(store.buckets[i].set);
       }
     }
+    return store;
   }
 
   componentDidMount = () => {
