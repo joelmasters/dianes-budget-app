@@ -193,7 +193,7 @@ export default function EditBucketInputs(props) {
               </ListSubheader>
             }>
           {values.history.map((x,i) => {  
-            let desc = x.hasOwnProperty('description') ? `: ${x.description}` : '';
+            let desc = (x.hasOwnProperty('description') && x.description !== '') ? `: ${x.description}` : '';
             return (
               <ListItem button key={x.date + i}>
                 <ListItemText primary={"$" + x.diff + desc} secondary={x.date} />
