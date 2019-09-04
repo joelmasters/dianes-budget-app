@@ -62,7 +62,11 @@ const useStyles = makeStyles(theme => ({
   title: {
     margin: theme.spacing(1),
   },
-  list: {}
+  list: {
+    maxHeight: 300,
+    overflow: 'auto',
+    width: '100%',
+  }
 }));
 
 export default function EditBucketInputs(props) {
@@ -102,9 +106,12 @@ export default function EditBucketInputs(props) {
       let da = d.getDate();
       let n = m + "/" + da + "/" + y;
 
+      let desc = document.getElementById('textfield-description').value;
+
       values.history.unshift({
         diff: diff,
         date: n,
+        description: desc,
       });
     } 
 
@@ -143,15 +150,14 @@ export default function EditBucketInputs(props) {
         }}
       />
       <TextField
-        id="textfield-add"
-        label="Gained"
-        type="number"
+        id="textfield-description"
+        label="Description"
         onChange={handleAdd('left')}
         className={classes.textField}
         variant="outlined"
         fullWidth
-        InputProps={{
-          startAdornment: <InputAdornment position="start">$</InputAdornment>,
+        InputLabelProps={{
+          shrink: true,
         }}
       />
       <Button 
@@ -163,7 +169,21 @@ export default function EditBucketInputs(props) {
         Save
       </Button>
       <br />
-      {values.history.length > 0 ? <List 
+      <TextField
+        id="textfield-add"
+        label="Gained"
+        type="number"
+        onChange={handleAdd('left')}
+        className={classes.textField}
+        variant="outlined"
+        fullWidth
+        InputProps={{
+          startAdornment: <InputAdornment position="start">$</InputAdornment>,
+        }}
+      />
+      <br />
+      {values.history.length > 0 ? 
+          <List 
             component="nav" 
             aria-label="history"
             className={classes.list}
@@ -172,16 +192,19 @@ export default function EditBucketInputs(props) {
                 History
               </ListSubheader>
             }>
-          {values.history.map((x,i) => 
-            <ListItem button key={x.date + i}>
-              <ListItemText primary={"$" + x.diff} secondary={x.date} />
-              <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete" onClick={() => deleteHistoryItem(i)}>
-                  <DeleteIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          )}
+          {values.history.map((x,i) => {  
+            let desc = x.hasOwnProperty('description') ? `: ${x.description}` : '';
+            return (
+              <ListItem button key={x.date + i}>
+                <ListItemText primary={"$" + x.diff + desc} secondary={x.date} />
+                <ListItemSecondaryAction>
+                  <IconButton edge="end" aria-label="delete" onClick={() => deleteHistoryItem(i)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            )
+          })}
         </List> : ''}
       <br />
       <FormControl component="fieldset" className={classes.formControl}>
