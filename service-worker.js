@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/dianes-budget-app/precache-manifest.f1d37674cadd4c5845c945f08541375d.js"
+  "/dianes-budget-app/precache-manifest.22b5ea06700ab2a29a6de923781147ed.js"
 );
 
 self.addEventListener('message', (event) => {
