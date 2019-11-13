@@ -6,12 +6,12 @@ import NavBar from './NavBar';
 import NewBucket from './NewBucket';
 import EditBucket from './EditBucket';
 
-const theme = createMuiTheme({
+/*const theme = createMuiTheme({
   palette: {
     primary: '#82ADA9',
     secondary: '#F48FB1',
   },
-});
+});*/
 
 class App extends React.Component {
   constructor(props) {
