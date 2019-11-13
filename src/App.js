@@ -20,8 +20,8 @@ class App extends React.Component {
       showNewBucketScreen: false,
       showEditBucketScreen: false,
       activeBucket: {},
-      todaysDate: '',
-      prevDate: '',
+      todaysDate: '1/1/2019',
+      prevDate: '1/0/2019',
       buckets: [
         {
           name: "Personal",
