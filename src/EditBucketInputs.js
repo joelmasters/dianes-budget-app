@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
   },
   buttonDelete: {
     margin: theme.spacing(1),
+    marginBottom: '50px',
     display: 'block',
   },
   input: {
@@ -65,7 +66,9 @@ const useStyles = makeStyles(theme => ({
   list: {
     maxHeight: 300,
     overflow: 'auto',
-    width: '100%',
+    width: '90%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
   }
 }));
 
@@ -97,8 +100,8 @@ export default function EditBucketInputs(props) {
     sub = !sub ? 0 : sub;
     let diff = add - sub;
     let newVal = parseInt(prevVal) + diff;
-    
-    if (newVal !== 0 && newVal !== "0") {
+
+    if (diff !== 0 && diff !== "0") {
       values.left = newVal;
       let d = new Date();
       let y = d.getFullYear();
@@ -189,7 +192,6 @@ export default function EditBucketInputs(props) {
             className={classes.list}
             subheader={
               <ListSubheader component="div" id="nested-list-subheader">
-                History
               </ListSubheader>
             }>
           {values.history.map((x,i) => {  

@@ -1,9 +1,17 @@
 import React from 'react';
+import { createMuiTheme } from '@material-ui/core/styles';
 import './App.css';
 import MainList from './MainList';
 import NavBar from './NavBar';
 import NewBucket from './NewBucket';
 import EditBucket from './EditBucket';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: '#82ADA9',
+    secondary: '#F48FB1',
+  },
+});
 
 class App extends React.Component {
   constructor(props) {
@@ -106,11 +114,10 @@ class App extends React.Component {
 
     let todaysDate = m + "/" + dd + "/" + y;
 
-    if (dd === 1) {
-      let prevDay = parseInt(store.prevDate.split("/")[1]);
-      if (prevDay !== 1) {
-        store = this.updateForNewMonth(store);
-      }
+    let prevDay = parseInt(store.prevDate.split("/")[1]);
+
+    if (shouldUpdate(dd, prevDay)) {
+      store = this.updateForNewMonth(store);
     }
 
     store.todaysDate = todaysDate;
@@ -171,6 +178,18 @@ class App extends React.Component {
 }
 
 export default App;
+
+/**
+ * Determines whether or not the buckets should reset
+ * @param {Number} currDay - current date day of month
+ * @param {Number} prevDay - previous recorded date of month
+ */
+export const shouldUpdate = (currDay, prevDay) => {
+  if (currDay < prevDay) {
+    return true;
+  }
+  return false;
+}
 
 const styles = {
   date: {
